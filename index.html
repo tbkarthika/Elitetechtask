@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elite Tech Internship</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(to right, #4e00c2, #5b42f3);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      background: #2e6ef7;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #184ddb;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Elite Tech Internship</h1>
+    <p>Learn — Innovate — Thrive</p>
+  </header>
+
+  <!-- Cards Section -->
+  <div class="container">
+
+    <!-- About Us Card -->
+    <div class="card">
+      <h2>About Us</h2>
+      <p>We guide interns to build real-world web projects using modern technologies like HTML, CSS, and JS with animations and effects.</p>
+      <a href="#" class="btn">Read More</a>
+    </div>
+
+    <!-- College Details Card -->
+    <div class="card">
+      <h2>College Details</h2>
+      <p>Sourashtra College<br>Computer Science Department<br>Accredited by NAAC, Approved by AICTE.</p>
+      <a href="http://www.sourashtracollege.com/index.aspx" target="_blank" class="btn">Visit College</a>
+    </div>
+
+    <!-- Project Task Card -->
+    <div class="card">
+      <h2>Task 1: Landing Page</h2>
+      <p>Create a landing page using HTML, CSS, and JS. Add transitions and animations. Optimize for color, font, and readability.</p>
+      <a href="file:///C:/landingpage/index.html" target="_blank" class="btn">View Project</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Elite Tech Intern | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

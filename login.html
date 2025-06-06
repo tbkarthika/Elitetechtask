@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Register | Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .toggle-link {
+      text-align: center;
+      margin-top: 15px;
+      color: #007bff;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .logout-btn {
+      background-color: #dc3545;
+      margin-top: 20px;
+    }
+
+    .dashboard {
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="loginContainer">
+    <h2>Login</h2>
+    <input type="text" id="loginUsername" placeholder="Username" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+    <div class="toggle-link" onclick="toggleForm('register')">Don't have an account? Register</div>
+  </div>
+
+  <div class="container hidden" id="registerContainer">
+    <h2>Register</h2>
+    <input type="text" id="registerUsername" placeholder="Choose Username" required>
+    <input type="password" id="registerPassword" placeholder="Choose Password" required>
+    <button onclick="register()">Register</button>
+    <div class="toggle-link" onclick="toggleForm('login')">Already have an account? Login</div>
+  </div>
+
+  <div class="container hidden" id="dashboardContainer">
+    <h2>Welcome, <span id="userDisplay"></span> 👋</h2>
+    <div class="dashboard">
+      <p>You are logged in to your secure dashboard.</p>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Elite Tech Intern | Login Auth System
+  </div>
+
+  <script>
+    function toggleForm(form) {
+      document.getElementById('loginContainer').classList.add('hidden');
+      document.getElementById('registerContainer').classList.add('hidden');
+      document.getElementById('dashboardContainer').classList.add('hidden');
+
+      if (form === 'login') {
+        document.getElementById('loginContainer').classList.remove('hidden');
+      } else if (form === 'register') {
+        document.getElementById('registerContainer').classList.remove('hidden');
+      } else if (form === 'dashboard') {
+        document.getElementById('dashboardContainer').classList.remove('hidden');
+      }
+    }
+
+    function register() {
+      const username = document.getElementById("registerUsername").value;
+      const password = document.getElementById("registerPassword").value;
+
+      if (username && password) {
+        localStorage.setItem("user", JSON.stringify({ username, password }));
+        alert("Registration successful! You can now login.");
+        toggleForm('login');
+      } else {
+        alert("Please fill in all fields.");
+      }
+    }
+
+    function login() {
+      const enteredUsername = document.getElementById("loginUsername").value;
+      const enteredPassword = document.getElementById("loginPassword").value;
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (storedUser && enteredUsername === storedUser.username && enteredPassword === storedUser.password) {
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("username", enteredUsername);
+        showDashboard();
+      } else {
+        alert("Invalid credentials");
+      }
+    }
+
+    function showDashboard() {
+      toggleForm('dashboard');
+      const user = localStorage.getItem("username");
+      document.getElementById("userDisplay").textContent = user;
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("username");
+      toggleForm('login');
+    }
+
+    // Check login state on load
+    window.onload = function() {
+      if (localStorage.getItem("loggedIn") === "true") {
+        showDashboard();
+      } else {
+        toggleForm('login');
+      }
+    }
+  </script>
+
+</body>
+</html>

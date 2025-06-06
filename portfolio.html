@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karthika | Portfolio</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #fdfdfd;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #4b6cb7;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact p {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      background: #eee;
+      padding: 1rem;
+      margin-top: 2rem;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Karthika</h1>
+  <p>Web Developer</p>
+</header>
+
+<section>
+  <h2>About Me</h2>
+  <p>Hello! I'm Karthika, a passionate front-end web developer with a love for building interactive, visually appealing websites. I'm proficient in HTML, CSS, JavaScript, and animation libraries like GSAP. I enjoy crafting clean code and user-friendly experiences.</p>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="grid">
+    <div class="card">
+      <strong>Bachelor of Computer Science</strong><br>
+      Sourashtra College<br>
+      2023 - 2026
+    </div>
+    <div class="card">
+      <strong>HSC</strong><br>
+      Sourashtra Girls Higher Secondary School<br>
+      2022 - 2023
+    </div>
+    <div class="card">
+      <strong>SSLC</strong><br>
+      Sourashtra Girls Higher Secondary School<br>
+      2020 - 2021
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Certificates</h2>
+  <div class="grid">
+    <div class="card">Internship - Web Development at Elite Tech Intern</div>
+    <div class="card">Responsive Web Design - freeCodeCamp</div>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="grid">
+    <div class="card">HTML5 & CSS3</div>
+    <div class="card">JavaScript (ES6+)</div>
+    <div class="card">GSAP Animations</div>
+    <div class="card">Responsive Design</div>
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <strong>Animated Landing Page</strong><br>
+      Built with HTML, CSS, and GSAP transitions for a smooth user experience.
+    </div>
+    <div class="card">
+      <strong>Personal Portfolio Website</strong><br>
+      A responsive and animated portfolio using modern web tech.
+    </div>
+    <div class="card">
+      <strong>Progressive Web App (PWA)</strong><br>
+      Offline e-commerce PWA with push notifications.
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Hobbies</h2>
+  <div class="grid">
+    <div class="card">Coding & Web Design</div>
+    <div class="card">Reading Tech Blogs</div>
+    <div class="card">UI/UX Sketching</div>
+    <div class="card">Listening to Music</div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Contact</h2>
+  <p><strong>Email:</strong> Karthika@example.com</p>
+  <p><strong>Phone:</strong> +91 98765 43210</p>
+  <p><strong>Location:</strong> Tamil Nadu, India</p>
+</section>
+
+<footer>
+  &copy; 2025 Karthika | All rights reserved.
+</footer>
+
+<script>
+  // Animate header
+  gsap.from("header", { duration: 1.2, y: -100, opacity: 0, ease: "power3.out" });
+
+  // Animate each section
+  gsap.utils.toArray("section").forEach((sec, i) => {
+    gsap.from(sec, {
+      scrollTrigger: {
+        trigger: sec,
+        start: "top 80%",
+      },
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      delay: i * 0.1
+    });
+  });
+
+  // Animate cards
+  gsap.from(".card", {
+    scrollTrigger: {
+      trigger: ".card",
+      start: "top 90%",
+    },
+    opacity: 0,
+    y: 30,
+    stagger: 0.1,
+    duration: 0.5
+  });
+</script>
+
+</body>
+</html>
